@@ -27,7 +27,8 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
-			"QUIT"
+			"QUIT",
+			"FULLSCREEN"
 		},
 		new string[] {
 			"RETURN",
@@ -56,6 +57,8 @@ static class MenuController
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
+	private const int FULL_SCREEN = 4;
+	
 
 	private const int MAIN_MENU_QUIT_BUTTON = 3;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
@@ -68,6 +71,8 @@ static class MenuController
 
 	private const int GAME_MENU_QUIT_BUTTON = 2;
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+	
+	
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
 	/// <summary>
@@ -252,6 +257,9 @@ static class MenuController
 			case GAME_MENU:
 				PerformGameMenuAction(button);
 				break;
+				case FULL_SCREEN:
+				PerformGameMenuAction(button);
+				break;
 		}
 	}
 
@@ -273,6 +281,9 @@ static class MenuController
 				break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
+				break;
+			case FULL_SCREEN:
+				GameController.Full_Screen();
 				break;
 		}
 	}
@@ -317,6 +328,7 @@ static class MenuController
 			case GAME_MENU_QUIT_BUTTON:
 				GameController.AddNewState(GameState.Quitting);
 				break;
+				
 		}
 	}
 }

@@ -32,7 +32,12 @@ public static class GameController
 	public static GameState CurrentState {
 		get { return _state.Peek(); }
 	}
-
+	
+	/// Toggle game to fullscreen
+	public static void Full_Screen()
+	{
+		SwinGame.ToggleFullScreen();
+	}
 	/// <summary>
 	/// Returns the human player.
 	/// </summary>
