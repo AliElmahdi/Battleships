@@ -300,7 +300,21 @@ public static class GameController
 	/// performed depend upon the state of the game.
 	/// </remarks>
 	public static void HandleUserInput()
-	{
+	{	
+		///Toggle the background music edit by afiq
+			if (SwinGame.KeyTyped(KeyCode.vk_m)) {
+				if (Audio.MusicVolume() > 0 ) {
+					Audio.SetMusicVolume(0);
+					Console.WriteLine("Music is muted");
+				}
+					else 
+					{
+						Audio.SetMusicVolume(1);
+						Console.WriteLine("Music is unmuted");
+					}	
+		}
+		
+		
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
@@ -366,6 +380,7 @@ public static class GameController
 		}
 
 		UtilityFunctions.DrawAnimations();
+		SwinGame.DrawText("Press m to toggle music volume", Color.White, 550, 10);
 
 		SwinGame.RefreshScreen();
 	}
