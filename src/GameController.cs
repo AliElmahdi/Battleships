@@ -38,6 +38,11 @@ public static class GameController
 	{
 		SwinGame.ToggleFullScreen();
 	}
+
+	public static void Screen(){
+		SwinGame.ChangeScreenSize(1024,768);
+	}
+
 	/// <summary>
 	/// Returns the human player.
 	/// </summary>
@@ -300,7 +305,7 @@ public static class GameController
 	/// performed depend upon the state of the game.
 	/// </remarks>
 	public static void HandleUserInput()
-	{	
+	{
 		///Toggle the background music edit by afiq
 			if (SwinGame.KeyTyped(KeyCode.vk_m)) {
 				if (Audio.MusicVolume() > 0 ) {
@@ -313,8 +318,6 @@ public static class GameController
 						Console.WriteLine("Music is unmuted");
 					}	
 		}
-		
-		
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
@@ -343,6 +346,8 @@ public static class GameController
 		}
 
 		UtilityFunctions.UpdateAnimations();
+	
+		
 	}
 
 	/// <summary>
@@ -380,7 +385,9 @@ public static class GameController
 		}
 
 		UtilityFunctions.DrawAnimations();
-		SwinGame.DrawText("Press m to toggle music volume", Color.White, 550, 10);
+		//Edit by Afiq///////////////////////////////////////////////////////////
+		SwinGame.DrawText("Press m to toggle music volume \n and n to next music", Color.White, 550, 10);
+		
 
 		SwinGame.RefreshScreen();
 	}
