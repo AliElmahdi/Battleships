@@ -29,8 +29,9 @@ static class MenuController
 			"SCORES",
 			"QUIT",
 			"FULL",
-			"SCREEN",
-			"MUSIC"
+			"BORDERLESS",/////Afiq DID toooo***************************
+			"MUSIC",/// afiq did **************************************
+			
 			
 		},
 		new string[] {
@@ -42,7 +43,13 @@ static class MenuController
 			"EASY",
 			"MEDIUM",
 			"HARD"
-		}
+		},
+		
+		// OPTION_MENU 
+		new string[] {
+			"MUSIC 1",
+			"MUSIC 2"
+		},
 
 	};
 	private const int MENU_TOP = 575;
@@ -56,6 +63,7 @@ static class MenuController
 	private const int MAIN_MENU = 0;
 	private const int GAME_MENU = 1;
 	private const int SETUP_MENU = 2;
+	private const int OPTION_MENU = 3;
 
 
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
@@ -63,8 +71,11 @@ static class MenuController
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 	private const int MAIN_MENU_QUIT_BUTTON = 3;
 	private const int FULL_SCREEN = 4;
-	private const int SCREEN = 5;
-	private const int SCREEN = 6;
+	private const int BORDERLESS = 5;/////AFIQ DIDDDD**********
+	private const int MAIN_MENU_OPTION_BUTTON = 6;
+	
+	
+	
 
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
@@ -74,6 +85,10 @@ static class MenuController
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
 	private const int GAME_MENU_QUIT_BUTTON = 2;
+	
+	private const int OPTION_MENU_MUSIC1_BUTTON = 0;
+	private const int OPTION_MENU_MUSIC2_BUTTON = 1;///Afiq did ooohhhhh
+
 
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
@@ -99,6 +114,19 @@ static class MenuController
 		}
 	}
 
+	/// <summary>
+	/// Handles the processing of user input when selecting option
+	/// </summary>
+	public static void HandleOptionMenuInput()////afiq didd ohhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+	{
+		bool handled = false;
+		handled = HandleMenuInput(OPTION_MENU, 1, 3);
+
+		if (!handled) {
+			HandleMenuInput(MAIN_MENU, 0, 0);
+		}
+	}
+	
 	/// <summary>
 	/// Handle input in the game menu.
 	/// </summary>
@@ -178,6 +206,12 @@ static class MenuController
 
 		DrawButtons(MAIN_MENU);
 		DrawButtons(SETUP_MENU, 1, 1);
+	}
+	
+	public static void DrawOption()/////Afiq Did ####################################
+	{
+		DrawButtons(MAIN_MENU);
+		DrawButtons(OPTION_MENU, 1, 3);
 	}
 
 	/// <summary>
@@ -263,9 +297,12 @@ static class MenuController
 			case FULL_SCREEN:
 				PerformGameMenuAction(button);
 				break;
-			case SCREEN:
-				PerformGameMenuAction(button);
+			case BORDERLESS:
+				PerformGameMenuAction(button);//////////Afiq did need change
 				break;
+			case OPTION_MENU:  //////afiq did *****************************
+				PerformOptionMenuAction(button);
+			break;
 		}
 	}
 
@@ -291,11 +328,12 @@ static class MenuController
 			case FULL_SCREEN:
 				GameController.Full_Screen();
 				break;
-			case SCREEN:
-				GameController.Screen();
+			case BORDERLESS:
+				GameController.BORDERLESS();
 				break;
-			case MUSIC:
-				GameController.Screen();
+			//////////////Afiq didd MAIN_MENU_OPTION_BUTTON
+			case MAIN_MENU_OPTION_BUTTON:
+				GameController.AddNewState(GameState.AlteringOption);
 				break;
 		}
 	}
@@ -337,10 +375,39 @@ static class MenuController
 				GameController.EndCurrentState();
 				//end game
 				break;
+			
 			case GAME_MENU_QUIT_BUTTON:
 				GameController.AddNewState(GameState.Quitting);
 				break;
 				
 		}
+	}
+	
+	//////////////////////////////Afiqqq did PerformOptionMenuAction
+	public static void PerformOptionMenuAction(int button)
+	{
+		/*
+		switch (button) {
+		case OPTION_MENU_FULLSCREEN_BUTTON:
+			SwinGame.ToggleFullScreen ();
+			break;
+		case OPTION_MENU_BORDERLESS_BUTTON:
+			SwinGame.ToggleWindowBorder ();
+			break;
+		}*/
+		
+		
+		switch (button) {
+		case OPTION_MENU_MUSIC1_BUTTON:
+			Audio.PlaySoundEffect(GameResources.GameSound("backgroundMusic"));
+			break;
+		case OPTION_MENU_MUSIC2_BUTTON:
+			Audio.PlaySoundEffect(GameResources.GameSound("backgroundMusic2"));
+			break;
+		}
+		
+		
+		//Always end state - handles exit button as well
+		GameController.EndCurrentState();
 	}
 }

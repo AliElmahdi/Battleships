@@ -246,6 +246,8 @@ static class UtilityFunctions
 			case GameState.AlteringSettings:
 			case GameState.ViewingHighScores:
 				SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
+				/////Afiq Did Tooooo************************
+				SwinGame.DrawTextLines("Press m to toggle music mode mute and unmute", Color.Yellow, Color.Transparent, GameResources.GameFont("Courier"), FontAlignment.AlignCenter, 0, 10, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 				break;
 			case GameState.Discovering:
 			case GameState.EndingGame:

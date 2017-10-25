@@ -56,9 +56,22 @@ public static class GameResources
 		NewSound("Lose", "lose.wav");
 	}
 
+	/////afiq diddd @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	private static void LoadMusic()
 	{
 		NewMusic("Background", "backgroundMusic.wav");
+		//music sourced from http://ocremix.org/remix/OCR01182
+	}
+	
+	private static void LoadMusic1()
+	{
+		NewMusic("Background", "backgroundMusic.wav");
+		//music sourced from http://ocremix.org/remix/OCR01182
+	}
+	
+	private static void LoadMusic2()
+	{
+		NewMusic("Background", "backgroundMusic2.wav");
 		//music sourced from http://ocremix.org/remix/OCR01182
 	}
 

@@ -38,10 +38,17 @@ public static class GameController
 	{
 		SwinGame.ToggleFullScreen();
 	}
-
-	public static void Screen(){
-		SwinGame.ChangeScreenSize(1024,768);
+	
+	////afiq DID to BOrderless
+	public static void BORDERLESS()
+	{
+		SwinGame.ToggleWindowBorder();
 	}
+	/*
+	public static void Screen()
+	{
+		SwinGame.ChangeScreenSize(1024,768);
+	}*/
 
 	/// <summary>
 	/// Returns the human player.
@@ -318,6 +325,7 @@ public static class GameController
 						Console.WriteLine("Music is unmuted");
 					}	
 		}
+		
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
@@ -333,6 +341,10 @@ public static class GameController
 				break;
 			case GameState.Deploying:
 				DeploymentController.HandleDeploymentInput();
+				break;
+				////afiq diddddd*******************
+			case GameState.AlteringOption:
+				MenuController.HandleOptionMenuInput();
 				break;
 			case GameState.Discovering:
 				DiscoveryController.HandleDiscoveryInput();
@@ -370,6 +382,10 @@ public static class GameController
 			case GameState.AlteringSettings:
 				MenuController.DrawSettings();
 				break;
+			/////////////// afiq didddddd $$$$$$$$$$$$$$$$$$$$$$$$$$$
+			case GameState.AlteringOption:
+				MenuController.DrawOption();
+				break;
 			case GameState.Deploying:
 				DeploymentController.DrawDeployment();
 				break;
@@ -386,7 +402,7 @@ public static class GameController
 
 		UtilityFunctions.DrawAnimations();
 		//Edit by Afiq///////////////////////////////////////////////////////////
-		SwinGame.DrawText("Press m to toggle music volume \n and n to next music", Color.White, 550, 10);
+		//SwinGame.DrawText("Press m to toggle music mode and n to next music", Color.White, 550, 10);
 		
 
 		SwinGame.RefreshScreen();
