@@ -96,7 +96,7 @@ static class HighScoreController
 	/// 
 	/// Where NNN is the name and SSS is the score
 	/// </remarks>
-	private static void SaveScores()
+	public static void SaveScores()
 	{
 		string filename = null;
 		filename = SwinGame.PathToResource("highscores.txt");
@@ -104,7 +104,7 @@ static class HighScoreController
 		StreamWriter output = default(StreamWriter);
 		output = new StreamWriter(filename);
 
-		output.WriteLine(_Scores.Count);
+		output.WriteLine("Top 10");
 
 		foreach (Score s in _Scores) {
 			output.WriteLine(s.Name + s.Value);
