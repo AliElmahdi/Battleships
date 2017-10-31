@@ -397,6 +397,7 @@ public static class GameController
 				break;
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
+				HighScoreController.SaveScores();
 				break;
 		}
 
